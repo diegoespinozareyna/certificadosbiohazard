@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import TareaList from '@/components/TareaList';
+import BannerEcologico from '@/components/BannerEcologico';
 import { useAuth } from '@/lib/useAuth';
 
 export default function TareasPage() {
@@ -32,6 +33,10 @@ export default function TareasPage() {
           </Link>
         )}
       </div>
+
+      {/* Banner ecológico SOLO para visitantes sin sesión, antes del buscador */}
+      {!isAuthenticated && <BannerEcologico />}
+
       <TareaList />
     </section>
   );

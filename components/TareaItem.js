@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import moment from 'moment-timezone';
+import QRCode from 'react-qr-code';
 import { useAuth } from '@/lib/useAuth';
 
 const TZ = 'America/Lima';
@@ -59,7 +60,7 @@ export default function TareaItem({ tarea, onDelete }) {
   const vigencia = calcularVigencia(tarea.fechaVencimiento);
 
   return (
-    <li className="group bg-white border border-mist-300 rounded-2xl p-5 shadow-soft hover:border-aqua-300 hover:shadow-[0_8px_30px_-12px_rgba(45,122,100,0.25)] transition-all flex items-start gap-4">
+    <li className="group bg-white border border-mist-400 rounded-2xl p-5 shadow-soft hover:border-aqua-400 hover:shadow-[0_14px_40px_-10px_rgba(45,122,100,0.35)] transition-all flex items-start gap-4">
       <span
         className={`mt-1.5 w-2.5 h-2.5 rounded-full shrink-0 ${
           vigencia ? vigencia.dot : 'bg-aqua-200'
@@ -139,15 +140,35 @@ export default function TareaItem({ tarea, onDelete }) {
         )}
       </div>
 
-      <div className="flex flex-col gap-2 shrink-0">
+      <div className="flex flex-col gap-2 shrink-0 items-stretch">
+        {tarea.pdfUrl && (
+          <div className="bg-white border border-mist-400 rounded-xl p-2 flex flex-col items-center gap-1 shadow-sm">
+            {/* QR responsive: grande en mobile (escaneable a distancia desde
+                otro celular), compacto en desktop */}
+            <div className="w-32 h-32 sm:w-24 sm:h-24 flex items-center justify-center">
+              <QRCode
+                value={tarea.pdfUrl}
+                size={256}
+                bgColor="#ffffff"
+                fgColor="#1c4940"
+                level="M"
+                style={{ height: '100%', width: '100%' }}
+                aria-label="Código QR del certificado"
+              />
+            </div>
+            {/* <span className="text-[10px] sm:text-[9px] uppercase tracking-wider text-aqua-700 font-semibold">
+              Escanéame
+            </span> */}
+          </div>
+        )}
         {tarea.pdfUrl && (
           <a
             href={tarea.pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-medium text-white bg-aqua-500 rounded-full px-3 py-1.5 hover:bg-aqua-600 transition-colors text-center shadow-soft"
+            className="text-xs font-medium text-white bg-aqua-500 rounded-full px-3 py-1.5 hover:bg-aqua-600 transition-colors text-center shadow-soft animate-pulse  "
           >
-            Ver PDF
+            Ver Certificado Digital
           </a>
         )}
         {isAuthenticated && (
