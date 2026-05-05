@@ -10,7 +10,7 @@ import { generarCertificadoPdf } from '@/lib/pdf/generarCertificadoPdf';
 import { mostrarLoadingPdf, ocultarLoadingPdf } from '@/lib/pdf/loading';
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+  "https://api.certificadosbiohazard.com/api" || 'http://localhost:4000/api';
 
 export default function EditarTareaPage() {
   const router = useRouter();
@@ -81,7 +81,7 @@ export default function EditarTareaPage() {
       if (!res.ok || json.ok === false || !json.url) {
         throw new Error(
           json.error ||
-            'R2 no devolvió url. Verifica R2_PUBLIC_URL en backend/.env'
+          'R2 no devolvió url. Verifica R2_PUBLIC_URL en backend/.env'
         );
       }
 
