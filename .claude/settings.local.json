@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs wc *)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\Dell\\\\Desktop\\\\biohazard\\\\frontendbiohazard\\\\lib\\\\pdf\\\\generarCertificadoPdf.js\" | Measure-Object -Line\\).Lines)"
+    ]
+  }
+}

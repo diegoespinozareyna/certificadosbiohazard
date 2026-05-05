@@ -15,6 +15,7 @@
     "moment-timezone": "^0.6.2",
     "next": "16.2.4",
     "pdfmake": "^0.3.7",
+    "qrcode": "^1.5.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.74.0",
