@@ -10,7 +10,7 @@ import { generarCertificadoPdf } from '@/lib/pdf/generarCertificadoPdf';
 import { mostrarLoadingPdf, ocultarLoadingPdf } from '@/lib/pdf/loading';
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+  "https://api.certificadosbiohazard.com/api" || 'http://localhost:4000/api';
 
 export default function NuevaTareaPage() {
   const router = useRouter();
