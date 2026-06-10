@@ -4,7 +4,7 @@ export default function Logo({ className = '' }) {
       <img
         src="/logobiohazard.jpeg"
         alt="Logo de BioHazard"
-        className="w-10 h-10 select-none"
+        className="w-30 h-20 select-none"
         draggable={false}
       />
     </span>

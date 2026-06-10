@@ -15,6 +15,7 @@ const SERVICIOS_OPCIONES = [
   'Desinfección',
   'Limpieza y desinfección de reservorios de agua',
   'Limpieza de trampa de grasa',
+  'Otros',
 ];
 
 // Convierte cualquier fecha (ISO completo o YYYY-MM-DD) al formato del
