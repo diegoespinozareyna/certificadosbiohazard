@@ -20,6 +20,8 @@ export const metadata = {
   title: "BioHazard — Saneamiento Ambiental",
   description:
     "Plataforma de gestión de certificados para servicios de saneamiento ambiental.",
+  // La imagen de preview (og:image / twitter:image) la genera
+  // app/opengraph-image.js con el logo centrado y con margen.
   openGraph: {
     title: "BioHazard — Saneamiento Ambiental",
     description:
@@ -28,19 +30,12 @@ export const metadata = {
     siteName: "BioHazard",
     locale: "es_PE",
     type: "website",
-    images: [
-      {
-        url: "/logobiohazard.jpeg",
-        alt: "BioHazard — Saneamiento Ambiental",
-      },
-    ],
   },
   twitter: {
     card: "summary",
     title: "BioHazard — Saneamiento Ambiental",
     description:
       "Plataforma de gestión de certificados para servicios de saneamiento ambiental.",
-    images: ["/logobiohazard.jpeg"],
   },
 };
 
