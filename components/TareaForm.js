@@ -132,9 +132,7 @@ export default function TareaForm({
         servicios: data.servicios || [],
         ubicacion: data.ubicacion?.trim() || '',
         giro: data.giro?.trim() || '',
-        areaTratada: data.areaTratada === '' || data.areaTratada == null
-          ? null
-          : Number(data.areaTratada),
+        areaTratada: String(data.areaTratada ?? '').trim() || null,
         fechaServicio: data.fechaServicio || null,
         fechaEmision: data.fechaEmision || null,
         fechaVencimiento: data.fechaVencimiento || null,
@@ -219,32 +217,17 @@ export default function TareaForm({
         </label>
 
         <label className="flex flex-col gap-1.5 sm:col-span-2">
-          <span className="text-sm font-medium text-aqua-800 flex items-center gap-2">
-            Área tratada
-            <span className="text-[10px] uppercase tracking-wider text-aqua-700/70 font-normal bg-aqua-100 px-1.5 py-0.5 rounded">
-              m²
-            </span>
-          </span>
+          <span className="text-sm font-medium text-aqua-800">Área tratada</span>
           <input
-            type="number"
-            inputMode="decimal"
-            min="0.01"
-            step="0.01"
+            type="text"
             className={inputBase}
-            placeholder="120"
-            {...register('areaTratada', {
-              validate: (v) => {
-                if (v === '' || v == null) return true;
-                const num = Number(v);
-                if (Number.isNaN(num)) return 'Debe ser un número';
-                if (num <= 0) return 'Debe ser mayor a 0';
-                return true;
-              },
-            })}
+            placeholder="Ej. 120 m2   ·   ÁREA TOTAL"
+            {...register('areaTratada')}
           />
-          {errors.areaTratada && (
-            <span className={errorClass}>{errors.areaTratada.message}</span>
-          )}
+          <span className="text-xs text-aqua-800/55">
+            Acepta números o texto. En el certificado siempre aparece en
+            MAYÚSCULAS (ej. «120 M2», «ÁREA TOTAL») y no duplica la unidad.
+          </span>
         </label>
       </div>
 
@@ -310,14 +293,32 @@ export default function TareaForm({
           <span className="text-sm font-medium text-aqua-800">
             Fecha de servicio
           </span>
-          <input type="date" className={inputBase} {...register('fechaServicio')} />
+          <input
+            type="date"
+            className={inputBase}
+            {...register('fechaServicio', {
+              required: 'Es obligatorio completar el campo Fecha de servicio',
+            })}
+          />
+          {errors.fechaServicio && (
+            <span className={errorClass}>{errors.fechaServicio.message}</span>
+          )}
         </label>
 
         <label className="flex flex-col gap-1.5">
           <span className="text-sm font-medium text-aqua-800">
             Fecha de emisión
           </span>
-          <input type="date" className={inputBase} {...register('fechaEmision')} />
+          <input
+            type="date"
+            className={inputBase}
+            {...register('fechaEmision', {
+              required: 'Es obligatorio completar el campo Fecha de emisión',
+            })}
+          />
+          {errors.fechaEmision && (
+            <span className={errorClass}>{errors.fechaEmision.message}</span>
+          )}
         </label>
 
         <label className="flex flex-col gap-1.5">
@@ -330,8 +331,13 @@ export default function TareaForm({
           <input
             type="date"
             className={inputBase}
-            {...register('fechaVencimiento')}
+            {...register('fechaVencimiento', {
+              required: 'Es obligatorio completar el campo Fecha de vencimiento',
+            })}
           />
+          {errors.fechaVencimiento && (
+            <span className={errorClass}>{errors.fechaVencimiento.message}</span>
+          )}
         </label>
       </div>
 

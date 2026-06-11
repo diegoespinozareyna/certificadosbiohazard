@@ -4,6 +4,7 @@ import Link from 'next/link';
 import moment from 'moment-timezone';
 import QRCode from 'react-qr-code';
 import { useAuth } from '@/lib/useAuth';
+import { formatearArea } from '@/lib/pdf/helpers';
 
 const TZ = 'America/Lima';
 
@@ -113,11 +114,7 @@ export default function TareaItem({ tarea, onDelete }) {
             <Campo etiqueta="Ubicación" valor={tarea.ubicacion} />
             <Campo
               etiqueta="Área tratada"
-              valor={
-                tarea.areaTratada != null && tarea.areaTratada !== ''
-                  ? `${tarea.areaTratada} m²`
-                  : null
-              }
+              valor={tarea.areaTratada ? formatearArea(tarea.areaTratada) : null}
             />
           </div>
         )}
