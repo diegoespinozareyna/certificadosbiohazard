@@ -16,9 +16,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://certificadosbiohazard.com"),
   title: "BioHazard — Saneamiento Ambiental",
   description:
     "Plataforma de gestión de certificados para servicios de saneamiento ambiental.",
+  openGraph: {
+    title: "BioHazard — Saneamiento Ambiental",
+    description:
+      "Plataforma de gestión de certificados para servicios de saneamiento ambiental.",
+    url: "https://certificadosbiohazard.com",
+    siteName: "BioHazard",
+    locale: "es_PE",
+    type: "website",
+    images: [
+      {
+        url: "/logobiohazard.jpeg",
+        alt: "BioHazard — Saneamiento Ambiental",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "BioHazard — Saneamiento Ambiental",
+    description:
+      "Plataforma de gestión de certificados para servicios de saneamiento ambiental.",
+    images: ["/logobiohazard.jpeg"],
+  },
 };
 
 export default function RootLayout({ children }) {
